@@ -67,6 +67,20 @@ const controller = {
         writeFile(data);
 
         res.redirect("/products/list");
+    },
+    destroy: (req, res) => {
+        const data = findAll();
+
+        const platoEncontrado = data.find(function(plato){
+            return plato.id == req.params.id
+        })
+
+        data.splice(platoEncontrado, 1);
+
+        writeFile(data);
+
+        res.redirect('/products/list'); 
+
     }
 }
 
